@@ -5,7 +5,10 @@ int main()
 
 double a=0, meter=0;
 
-double max=0, min=0, sum=0, db=0;
+double sum=0, db=0;
+double cm=100;
+double ft=3.2808;
+double in=0.0254;
 
 string unit;
 
@@ -32,37 +35,27 @@ if (unit=="m" || unit=="cm" || unit=="ft" || unit=="in")
 		
 		
 		if (unit=="cm")
-			{sum=sum+(a/100);
-				meter=(a/100);
+			{sum=sum+(a/cm);
+				meter=(a/cm);
 			
 			}
 		
 		
 		if (unit=="ft")
-			{sum=sum+(a/3.2808);
-			meter=a/3.2808;
+			{sum=sum+(a/ft);
+			meter=a/ft;
 			}
 		
 
 		if (unit=="in")
-			{sum=sum+(a*0.0254);
-				meter=(a*0.0254);
+			{sum=sum+(a*in);
+				meter=(a*in);
 
 			}
 
 		db=db+1;
 
-		if (max==0 && min==0)
-		{
-			min=meter;
-			max=meter;
-		}
-
-		if (max<meter)
-			max=meter;
-
-		if (min>meter)
-			min=meter;
+		
 
 
 		values.push_back(meter);
@@ -75,8 +68,10 @@ else cout<<"Invalid unit"<<endl;
 
 }
 
-cout<<"The smallest value is: "<<min<<" m"<<endl;
-cout<<"The largest value is: "<<max<<" m"<<endl;
+sort(values.begin(), values.end());
+
+cout<<"The smallest value is: "<<values[0]<<" m"<<endl;
+cout<<"The largest value is: "<<values[db-1]<<" m"<<endl;
 cout<<"The sum of the values are: "<<sum<<endl;
 cout<<"The the number of values are: "<<db<<endl;
 
