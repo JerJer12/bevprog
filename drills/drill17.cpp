@@ -1,13 +1,13 @@
-#include "../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
-ostream& print_array10(ostream& os, int* a)
+ostream& print_array10(ostream& os, int* a) //kiírja az int a elemeit (tegyük fel, hogy 10 elem van)
 {
 	for(int i = 0; i < 10; ++i)
 		os << a[i] << endl;
 	return os;
 }
 
-ostream& print_array(ostream& os, int* a, int n)
+ostream& print_array(ostream& os, int* a, int n) //-||- (tegyük fel hogy n elem van)
 {
 	for(int i = 0; i < n; ++i)
 		os << a[i] << endl;
@@ -24,7 +24,7 @@ ostream& print_vector(ostream& os, vector<int>& v)
 int main()
 {	
 	try{
-		int* a = new int[10];	//itt nem inicializáljuk az elemeket
+		int* a = new int[10];
 		print_array10(cout, a);
 		delete[] a;
 		
@@ -40,36 +40,45 @@ int main()
 		print_array(cout, d, 20);
 		delete[] d;
 
-		vector<int> v0(10);
+		
+		vector<int> v1(10);			//vektor felvétel és feltöltés
 		int y = 100;
-	    for (int& v : v0) {
+	    for (int& v : v1) {
 	        v = y;
 	        ++y;
 	    }
-	    print_vector(cout, v0);
+	    print_vector(cout, v1);
 
-	    vector<int> v1(11);
+	    
+	    vector<int> v2(11);
 	    int z = 100;
-	    for (int& v : v1) {
-	        v = z;
-	        ++z;
-	    }
-		print_vector(cout, v1);    
+	    	for (int& v : v2) 
+	    	{
+	        	v = z;
+	        	++z;
+	    	}
+		print_vector(cout, v2);   
 
-		vector<int> v2(20);
+		
+		vector<int> v3(20);
 		int x = 100;
-	    for (int& v : v2) {
-	        v = x;
-	        ++z;
-	    }
-		print_vector(cout, v2);
+	    	for (int& v : v3) 
+	    	{
+	        	v = x;
+	        	++x;
+	    	}
+		print_vector(cout, v3);
 
 		return 0;
 		
-	}catch(exception& e){
+	}
+	catch(exception& e)
+	{
     	cerr << "Exception: " << e.what() << '\n';
    		return 1;
-	}catch(...) {    		
+	}
+	catch(...) 
+	{    		
 		cerr << "Unknown exception\n";
     	return 2;
     }
